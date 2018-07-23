@@ -1,5 +1,5 @@
 # CRA-RisingStack-Docker-GraphQL
-Build CRA, RisingStack, Docker, and GraphQL setup from scratch
+A setup with Create React App, LESS, RisingStack, Docker, and GraphQL
 
 # Getting Started
 - After cloning the repo, run the commands below in the project directory to authorize bash to run the scripts

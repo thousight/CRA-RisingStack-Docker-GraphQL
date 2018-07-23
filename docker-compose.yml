@@ -24,6 +24,7 @@ services:
       - ./src:/app/src
       - ./.gitignore:/app/.gitignore
       - ./server.js:/app/server.js
+      - ./config-overrides.js:/app/config-overrides.js
       - ./package.json:/app/package.json
     depends_on:
       - postgresql

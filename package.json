@@ -3,19 +3,6 @@
   "version": "1.0.0",
   "description": "Build CRA, RisingStack, Docker, and GraphQL setup from scratch",
   "main": "server.js",
-  "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "start:web": "react-scripts start",
-    "start:api": "nodemon server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thousight/RisingStack-Docker-GraphQL.git"
@@ -33,5 +20,28 @@
   "bugs": {
     "url": "https://github.com/thousight/RisingStack-Docker-GraphQL/issues"
   },
-  "homepage": "https://github.com/thousight/RisingStack-Docker-GraphQL#readme"
+  "homepage": "https://github.com/thousight/RisingStack-Docker-GraphQL#readme",
+  "scripts": {
+    "start": "node server.js",
+    "start:web": "react-app-rewired start",
+    "start:api": "nodemon server.js",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "npm run build-css",
+    "build-css": "lessc --relative-urls ./src/index.less ./src/index.css",
+    "watch-css": "npm run build-css && lessc --relative-urls ./src/index.less ./src/index.css"
+  },
+  "dependencies": {
+    "less": "^3.8.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.8.0",
+    "less-loader": "^4.1.0",
+    "react-app-rewire-less": "^2.1.2",
+    "react-app-rewired": "^1.5.2"
+  }
 }
