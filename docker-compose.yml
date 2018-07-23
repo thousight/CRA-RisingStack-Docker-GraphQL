@@ -20,10 +20,9 @@ services:
     volumes:
       - ./docker.js:/docker.js
       - ./public:/app/public
-      - ./server:/app/server
+      - ./api:/app/api
       - ./src:/app/src
       - ./.gitignore:/app/.gitignore
-      - ./server.js:/app/server.js
       - ./config-overrides.js:/app/config-overrides.js
       - ./package.json:/app/package.json
     depends_on:

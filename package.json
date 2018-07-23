@@ -2,7 +2,7 @@
   "name": "risingstack-docker-graphql",
   "version": "1.0.0",
   "description": "Build CRA, RisingStack, Docker, and GraphQL setup from scratch",
-  "main": "server.js",
+  "main": "api/server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thousight/RisingStack-Docker-GraphQL.git"
@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/thousight/RisingStack-Docker-GraphQL#readme",
   "scripts": {
-    "start": "node server.js",
-    "start:web": "react-app-rewired start",
-    "start:api": "nodemon server.js",
-    "build": "react-app-rewired build",
+    "start": "node dist/server.js",
+    "dev:web": "react-app-rewired start",
+    "dev:api": "nodemon --watch ./api/ --exec babel-node ./api/server.js  --presets=env",
+    "build": "react-app-rewired build && babel ./api -d dist",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "npm run build-css",
@@ -33,13 +33,29 @@
     "watch-css": "npm run build-css && lessc --relative-urls ./src/index.less ./src/index.css"
   },
   "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "bluebird": "^3.5.1",
+    "joi": "^13.4.0",
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "koa-redis": "^3.1.2",
+    "koa-router": "^7.4.0",
     "less": "^3.8.0",
+    "lodash": "^4.17.10",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4"
+    "react-scripts": "^1.1.4",
+    "winston": "^3.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-cli": "^6.26.0",
     "babel-plugin-import": "^1.8.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-bluebird": "^1.0.1",
+    "babel-preset-env": "^1.7.0",
     "less-loader": "^4.1.0",
     "react-app-rewire-less": "^2.1.2",
     "react-app-rewired": "^1.5.2"
