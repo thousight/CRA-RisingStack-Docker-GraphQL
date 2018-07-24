@@ -25,7 +25,7 @@
     "start": "node dist/server.js",
     "dev:web": "react-app-rewired start",
     "dev:api": "nodemon --watch ./api/ --exec babel-node ./api/server.js  --presets=env",
-    "build": "react-app-rewired build && babel ./api -d dist",
+    "build": "react-app-rewired build && babel ./api -d dist && mv build dist/public",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "npm run build-css",
@@ -34,11 +34,13 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.2",
+    "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "joi": "^13.4.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-compose": "^4.1.0",
+    "koa-logger": "^3.2.0",
     "koa-redis": "^3.1.2",
     "koa-router": "^7.4.0",
     "less": "^3.8.0",
@@ -49,8 +51,8 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-import": "^1.8.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
