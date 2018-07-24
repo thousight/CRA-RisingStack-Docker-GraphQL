@@ -9,8 +9,7 @@ export default () => async function activityLogger(ctx, next) {
     } catch (err) {
       const errorString = `${method}: ${originalUrl}`
 
-      console.error(errorString)
-      logger.error.info(errorString, { error: err.message })
+      logger.error(errorString, { error: err.message })
       throw err
     }
 
@@ -19,10 +18,8 @@ export default () => async function activityLogger(ctx, next) {
     const loggingString = `${method} ${originalUrl} -> ${status} ${ms}ms`
 
     if (status >= 400) {
-        console.error(loggingString)
-        logger.error.info(loggingString)
+        logger.error(loggingString)
     } else {
-        console.log(loggingString)
-        logger.access.info(loggingString)
+        logger.info(loggingString)
     }
   }
