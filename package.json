@@ -2,7 +2,7 @@
   "name": "risingstack-docker-graphql",
   "version": "1.0.0",
   "description": "Build CRA, RisingStack, Docker, and GraphQL setup from scratch",
-  "main": "api/server.js",
+  "main": "dist/server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thousight/RisingStack-Docker-GraphQL.git"
@@ -24,9 +24,11 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev:web": "react-app-rewired start",
-    "dev:api": "nodemon --watch ./api/ --exec babel-node ./api/server.js  --presets=env",
+    "dev:api": "nodemon --watch ./api/ --exec babel-node ./api/server.js --presets=env",
     "build": "react-app-rewired build && babel ./api -d dist && mv build dist/public",
-    "test": "react-app-rewired test --env=jsdom",
+    "test:web": "react-app-rewired test --env=jsdom",
+    "test:api": "PORT=2334 mocha --require babel-core/register ./api/**/*.test.js",
+    "test:api:watch": "PORT=2334 nodemon --ext test.js --watch ./api/ --delay 1 --exec mocha --require babel-core/register 'api/**/*.test.js'",
     "eject": "react-scripts eject",
     "postinstall": "npm run build-css",
     "build-css": "lessc --relative-urls ./src/index.less ./src/index.css",
@@ -58,8 +60,13 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-bluebird": "^1.0.1",
     "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
     "less-loader": "^4.1.0",
+    "mocha": "^5.2.0",
     "react-app-rewire-less": "^2.1.2",
-    "react-app-rewired": "^1.5.2"
+    "react-app-rewired": "^1.5.2",
+    "sinon": "^6.1.4",
+    "sinon-chai": "^3.2.0",
+    "super-request": "^1.2.0"
   }
 }

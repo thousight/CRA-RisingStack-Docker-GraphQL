@@ -19,3 +19,5 @@ app.on('error', (err) => {
 app.listen(port, () => {
   console.log(`Koa server is listenning to port ${port}`)
 })
+
+export default app

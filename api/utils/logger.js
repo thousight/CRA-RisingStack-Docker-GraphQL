@@ -7,6 +7,7 @@ const logPath = `${__dirname}/logs`
 const tsFormat = () => (new Date().toISOString());
 
 const infoLogger = winston.createLogger({
+    format: winston.format.simple(),
     transports: [
         new winston.transports.File({
             filename: path.join(logPath, 'access.log'),
@@ -23,6 +24,7 @@ const infoLogger = winston.createLogger({
 })
 
 const errorLogger = winston.createLogger({
+    format: winston.format.simple(),
     transports: [
         new winston.transports.File({
             filename: path.join(logPath, 'errors.log'),

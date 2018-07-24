@@ -1,5 +1,15 @@
 {
-	"presets": ["env", "bluebird"],
+	"presets": [
+		[
+			"env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		],
+		"bluebird"
+	],
 	"plugins": [
 		"transform-object-rest-spread",
 		"transform-es2015-arrow-functions"
