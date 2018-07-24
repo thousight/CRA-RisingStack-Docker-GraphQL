@@ -33,9 +33,9 @@ services:
       - redis
     ports:
       - 3000:3000 # React Development Server
-      - 2333:3001 # Web API
-      - 2334:5858 # Debugging port for Web API
-      - 2335:3002 # Swagger Project Editor
+      - 2333:2333 # Web API
+      - 2334:2334 # Debugging port for Web API
+      - 2335:2335 # Swagger Project Editor
     environment:
       PG_URI: postgres://postgres:password@postgresql:5432/postgresql
       PG_USER: postgres
