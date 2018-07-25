@@ -42,5 +42,6 @@ const errorLogger = winston.createLogger({
 
 export default {
     info: (msg) => infoLogger.info(msg),
-    error: (msg) => errorLogger.error(msg)
+    error: (msg) => errorLogger.error(msg),
+    log: (msg) => infoLogger.info(msg),
 }

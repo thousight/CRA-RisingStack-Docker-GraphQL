@@ -1,0 +1,10 @@
+const Query = `
+  type Query {
+    allRepositories: [Repository]
+    getRepositoryById(id: Int!): Repository
+    allContributors: [Contributor]
+    allUsers: [User]
+  }
+`
+
+export default Query

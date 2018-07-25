@@ -1,5 +1,3 @@
-import Repository from './Repository'
-
 const Contributor = `
   type Contributor {
     user: Int!
@@ -8,4 +6,4 @@ const Contributor = `
   }
 `
 
-export default [ Contributor, Repository ]
+export default Contributor

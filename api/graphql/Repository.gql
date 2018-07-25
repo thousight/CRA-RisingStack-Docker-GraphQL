@@ -1,0 +1,46 @@
+const Repository = `
+  type Repository {
+    id: Int!
+    owner: Int
+    full_name: String
+    description: String
+    html_url: String
+    language: String
+    stargazers_count: Int
+  }
+`
+
+const repositoriesMockData = [
+  {
+    id: 1,
+    owner: 3,
+    full_name: 'baseball',
+    description: 'meh',
+    html_url: 'www.google.com',
+    language: 'String',
+    stargazers_count: 332
+  },
+  {
+    id: 2,
+    owner: 4,
+    full_name: 'baseball',
+    description: 'meh',
+    html_url: 'www.google.com',
+    language: 'String',
+    stargazers_count: 332
+  }
+]
+
+const resolver = {
+  Query: {
+    getRepositoryById: (_, { id }) => {
+      return repositoriesMockData.find(repo => repo.id === id)
+    },
+    allRepositories: () => repositoriesMockData
+  }
+}
+
+export default {
+  typeDef: Repository,
+  resolver
+}
