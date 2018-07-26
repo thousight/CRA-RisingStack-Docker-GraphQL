@@ -23,6 +23,7 @@ services:
       - ./api:/app/api
       - ./src:/app/src
       - ./.gitignore:/app/.gitignore
+      - ./config.json:/app/config.json
       - ./config-overrides.js:/app/config-overrides.js
       - ./package.json:/app/package.json
     depends_on:

@@ -1,9 +1,0 @@
-const Contributor = `
-  type Contributor {
-    user: ID!
-    repository: Repository!
-    line_count: Int
-  }
-`
-
-export default Contributor

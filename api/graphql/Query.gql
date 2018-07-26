@@ -1,10 +1,6 @@
-const Query = `
+export default `
   type Query {
-    repository(name: String!): Repository
     searchRepositories(query: String!): [Repository]
-    allContributors: [Contributor]
-    allUsers: [User]
+    getContributors(repository: String!, query: String!): [Contribution]
   }
 `
-
-export default Query
