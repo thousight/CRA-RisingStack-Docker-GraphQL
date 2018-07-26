@@ -1,7 +1,7 @@
 const Query = `
   type Query {
-    allRepositories: [Repository]
-    getRepositoryById(id: Int!): Repository
+    repository(name: String!): Repository
+    searchRepositories(query: String!): [Repository]
     allContributors: [Contributor]
     allUsers: [User]
   }

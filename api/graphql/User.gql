@@ -1,6 +1,6 @@
 const User = `
   type User {
-    id: Int!
+    id: ID!
     login: String
     avator_url: String
     html_url: String

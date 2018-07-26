@@ -15,6 +15,8 @@ app
 
 // Listen to error occur
 app.on('error', (err) => {
+  console.log(err);
+  
   logger.error('Server error', { error: err.message })
 })
 

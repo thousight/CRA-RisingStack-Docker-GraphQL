@@ -1,7 +1,9 @@
-const Repository = `
+import searchRepositories from '../controllers/searchRepositories/searchRepositories'
+
+const typeDef = `
   type Repository {
-    id: Int!
-    owner: Int
+    id: ID!
+    owner: ID
     full_name: String
     description: String
     html_url: String
@@ -10,37 +12,16 @@ const Repository = `
   }
 `
 
-const repositoriesMockData = [
-  {
-    id: 1,
-    owner: 3,
-    full_name: 'baseball',
-    description: 'meh',
-    html_url: 'www.google.com',
-    language: 'String',
-    stargazers_count: 332
-  },
-  {
-    id: 2,
-    owner: 4,
-    full_name: 'baseball',
-    description: 'meh',
-    html_url: 'www.google.com',
-    language: 'String',
-    stargazers_count: 332
-  }
-]
-
-const resolver = {
+const resolvers = {
   Query: {
-    getRepositoryById: (_, { id }) => {
-      return repositoriesMockData.find(repo => repo.id === id)
+    repository: (_, { name }, ctx) => {
+      
     },
-    allRepositories: () => repositoriesMockData
+    searchRepositories
   }
 }
 
 export default {
-  typeDef: Repository,
-  resolver
+  typeDef,
+  resolvers
 }

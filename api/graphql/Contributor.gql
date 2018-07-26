@@ -1,6 +1,6 @@
 const Contributor = `
   type Contributor {
-    user: Int!
+    user: ID!
     repository: Repository!
     line_count: Int
   }

@@ -1,5 +1,5 @@
 import Router from 'koa-router'
-import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa'
+import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa'
 
 import hello from './controllers/hello/hello'
 
@@ -10,9 +10,9 @@ const router = new Router({ prefix: '/api' })
 router.get('/', hello)
 router.post(
     '/graphql',
-    graphqlKoa(ctx => ({
+    graphqlKoa(context => ({
       schema,
-      context: { ctx }
+      context
     }))
   )
   

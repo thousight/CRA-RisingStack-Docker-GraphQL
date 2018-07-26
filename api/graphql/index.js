@@ -9,6 +9,6 @@ import logger from '../utils/logger'
 
 export default makeExecutableSchema({
     typeDefs: [ Contributor, Repository.typeDef, User, Query ],
-    resolvers: [ Repository.resolver ],
+    resolvers: [ Repository.resolvers ],
     logger
 })
