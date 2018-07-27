@@ -10,7 +10,12 @@ const typeDef = `
 
 const resolvers = {
   Query: {
-    
+    user: (_, { id, login }) => {
+      
+    }
+  },
+  Mutation: {
+
   }
 }
 
