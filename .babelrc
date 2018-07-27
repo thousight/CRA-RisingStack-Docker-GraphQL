@@ -1,9 +1,28 @@
 {
 	"presets": [
-		"env",
+		[
+			"env",
+			{
+				"targets": {
+					"node": "8.9.4"
+				}
+			}
+		],
+		[
+			"latest-node",
+			{
+				"target": "current"
+			}
+		],
 		"bluebird"
 	],
 	"plugins": [
+		[
+			"import",
+			{
+				"libraryName": "antd"
+			}
+		],
 		"transform-object-rest-spread",
 		"transform-es2015-arrow-functions"
 	]
