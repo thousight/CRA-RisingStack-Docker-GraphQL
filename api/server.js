@@ -14,7 +14,7 @@ app
   .use(bodyParser())
   .use(router.routes())
 
-  apolloServer.applyMiddleware({ app })
+apolloServer.applyMiddleware({ app })
 
 // Listen to error occur
 app.on('error', (err) => {
@@ -24,7 +24,7 @@ app.on('error', (err) => {
 
 
 app.listen(port, () => {
-  console.log(`Koa server is listenning to port ${port}`)
+  console.log(`Koa server is listenning to port ${port}, and apollo graphql is listening at ${apolloServer.graphqlPath}`)
 })
 
 export default app

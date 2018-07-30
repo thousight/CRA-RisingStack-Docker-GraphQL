@@ -1,8 +1,10 @@
+import createContribution from './createContribution'
+import createOrReplaceContribution from './createOrReplaceContribution'
 import getContributors from './getContributors'
 
 const typeDef = `
   type Contribution {
-    user: ID!
+    user: User
     repository: Repository
     line_count: Int
   }
@@ -10,6 +12,10 @@ const typeDef = `
 const resolvers = {
   Query: {
     getContributors
+  },
+  Mutation: {
+    createContribution,
+    createOrReplaceContribution
   }
 }
 

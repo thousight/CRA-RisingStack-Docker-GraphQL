@@ -8,7 +8,8 @@ export default () => async function activityLogger(ctx, next) {
       await next()
     } catch (err) {
       const errorString = `${method}: ${originalUrl}`
-
+      console.log(err)
+      
       logger.error(errorString, { error: err.message })
       throw err
     }

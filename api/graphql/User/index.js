@@ -1,3 +1,6 @@
+import user from './user'
+import createUser from './createUser'
+
 const typeDef = `
   type User {
     id: ID!
@@ -10,12 +13,10 @@ const typeDef = `
 
 const resolvers = {
   Query: {
-    user: (_, { id, login }) => {
-      
-    }
+    user
   },
   Mutation: {
-
+    createUser
   }
 }
 
