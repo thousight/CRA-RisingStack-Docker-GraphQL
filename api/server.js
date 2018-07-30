@@ -1,6 +1,7 @@
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 
+import apolloServer from './graphql'
 import logger from './utils/logger'
 import router from './routes'
 import activityLogger from './middlewares/activityLogger'
@@ -12,6 +13,8 @@ app
   .use(activityLogger())
   .use(bodyParser())
   .use(router.routes())
+
+  apolloServer.applyMiddleware({ app })
 
 // Listen to error occur
 app.on('error', (err) => {
