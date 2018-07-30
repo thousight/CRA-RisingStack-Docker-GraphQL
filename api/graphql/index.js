@@ -1,10 +1,10 @@
 import { ApolloServer, makeExecutableSchema } from 'apollo-server-koa'
 
-import Contribution from './Contribution.gql'
-import Repository from './Repository.gql'
-import User from './User.gql'
-import Query from './Query.gql'
-import Mutation from './Mutation.gql'
+import Contribution from './Contribution'
+import Repository from './Repository'
+import User from './User'
+import Query from './Query'
+import Mutation from './Mutation'
 
 import logger from '../utils/logger'
 

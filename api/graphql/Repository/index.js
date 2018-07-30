@@ -1,4 +1,4 @@
-import searchRepositories from '../controllers/searchRepositories/searchRepositories'
+import searchRepositories from './searchRepositories'
 
 const typeDef = `
   type Repository {

@@ -1,4 +1,4 @@
-import getContributors from '../controllers/getContributors/getContributors'
+import getContributors from './getContributors'
 
 const typeDef = `
   type Contribution {
