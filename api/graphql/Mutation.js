@@ -8,6 +8,6 @@ export default `
     createOrReplaceContribution(repository: String, user: String, line_count: Int!): Contribution
 
     # User
-    createUser(id: ID!, login: String!, avatar_url: String, html_url: String, type: String): User
+    createUser(id: Int!, login: String!, avatar_url: String, html_url: String, type: String): User
   }
 `

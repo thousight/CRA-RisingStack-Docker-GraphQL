@@ -3,7 +3,7 @@ import createUser from './createUser'
 
 const typeDef = `
   type User {
-    id: ID!
+    id: Int!
     login: String
     avator_url: String
     html_url: String
