@@ -1,15 +1,18 @@
+import joi from 'joi'
 import knex from '../../utils/knex'
 
-export default (_, { id, login, avatar_url, html_url, type }) => {
-    knex('user')
-    .returning([ 'id', 'login', 'avatar_url', 'html_url', 'type' ])
-    .insert({ id, login, avatar_url, html_url, type })
-    .then(res => {
-        console.log(res);
-        return res
-    })
-    .catch(error => {
-        console.log(error);
-        return error
-    })
+const insertSchema = joi.object({
+    id: joi.number().integer().required(),
+    login: joi.string().required(),
+    avatar_url: joi.string().uri(),
+    html_url: joi.string().uri(),
+    type: joi.string(),
+}).required()
+
+export default async (_, params) => {
+    const user = joi.attempt(params, insertSchema)
+
+    return await knex('user')
+    .insert(user)
+    .returning('*')
 }
