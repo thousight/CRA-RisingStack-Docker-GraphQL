@@ -12,7 +12,7 @@ const insertSchema = joi.object({
 export default async (_, params) => {
     const user = joi.attempt(params, insertSchema)
 
-    return await knex('user')
-    .insert(user)
-    .returning('*')
+    const result = await knex('user').insert(user).returning('*')
+
+    return result[0]
 }
