@@ -14,20 +14,13 @@ const insertSchema = joi.object({
 export default async (_, params) => {
     const repo = joi.attempt(params, insertSchema)
 
-    await knex('repository').insert(repo).returning('*')
-    const foundRepo = await knex('repository').where({ 'repository.id': repo.id }).leftJoin('user', 'repository.owner', 'user.id').options({ nestTables: true}).first()
-    
+    const addedRepo = await knex('repository').insert(repo).returning('*').then(result => result[0])
+    const foundOwner = await knex('user').where({ 'id': repo.owner }).first()
+
     const result = {
-      ...foundRepo,
-      owner: {
-        id: foundRepo.owner,
-        login: foundRepo.login,
-        avatar_url: foundRepo.avatar_url,
-        type: foundRepo.type,
-      }
+        ...addedRepo,
+        owner: foundOwner
     }
-    
-    console.log(result);
     
     return result
 }
