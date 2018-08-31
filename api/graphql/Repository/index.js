@@ -1,5 +1,6 @@
 import createRepository from './createRepository'
 import searchRepositories from './searchRepositories'
+import repository from './repository'
 
 const typeDef = `
   type Repository {
@@ -15,10 +16,11 @@ const typeDef = `
 
 const resolvers = {
   Query: {
-    searchRepositories
+    searchRepositories,
+    repository,
   },
   Mutation: {
-    createRepository
+    createRepository,
   }
 }
 
