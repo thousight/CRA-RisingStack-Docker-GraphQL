@@ -1,5 +1,9 @@
 import joi from 'joi'
-import knex from '../../utils/knex'
+import knex, {
+  getColumns,
+  addPrefixAliasToColumns,
+  addJoinedTableColumnDataIntoObject,
+} from '../../utils/knex'
 
 const readSchema = joi.object({
   id: joi.number().integer().required(),
@@ -8,24 +12,14 @@ const readSchema = joi.object({
 export default async (_, params) => {
   const query = joi.attempt(params, readSchema)
 
+  const userColumns =  await getColumns('user')
+  const userColumnsWithPrefixes = addPrefixAliasToColumns('user', userColumns)
+
   const foundRepo = await knex('repository')
-    .select(['repository.*', knex.raw('to_json(user.*) as user')])
+    .select(['repository.*', ...userColumnsWithPrefixes])
     .leftJoin('user', 'repository.owner', 'user.id')
     .where({ 'repository.id': query.id })
     .first()
-  console.log(foundRepo);
 
-  const result = {
-    ...foundRepo,
-    owner: {
-      id: foundRepo.owner,
-      login: foundRepo.login,
-      avatar_url: foundRepo.avatar_url,
-      type: foundRepo.type,
-    }
-  }
-
-  console.log(result);
-
-  return result
+  return addJoinedTableColumnDataIntoObject(foundRepo, 'owner', 'user', userColumns, true)
 }
