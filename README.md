@@ -1,4 +1,7 @@
 # CRA-RisingStack-Docker-GraphQL
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/thousight/CRA-RisingStack-Docker-GraphQL.svg)](https://greenkeeper.io/)
+
 A setup with Create React App, LESS, RisingStack, Docker, and GraphQL
 
 # Getting Started
